@@ -8,7 +8,7 @@
   </a>
 </p>
 
-### 🏠 [Homepage](https://github.com/WiseCoding/php-debugging)
+### 🏠 [Repo](https://github.com/WiseCoding/php-debugging)
 
 ### ✨ [Demo](https://wisecoding.github.io/php-debugging/)
 

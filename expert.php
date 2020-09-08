@@ -33,7 +33,7 @@ echo $monday;
 // === Exercise 3 ===
 new_exercise(3);
 // This should echo ` "Debugged !" `, fix it so that that is the literal text echo'ed
-$str = "Debugged !";
+$str = "Debugged ! Also very fun";
 echo substr($str, 0, 10);
 
 // Problem: Gremlins
@@ -52,9 +52,16 @@ foreach ($week as $day) {
   print_r($day . ' ');
 }
 
-// Problem: code is printing the fully array
+// Problem: code is printing the full array
 // Solution: placed print_r inside foreach, changed print_r to $day with a space instead of $week
 // Debug: IDE
+
+// Other solution: "passing a variable by value or by reference
+/*foreach ($week as &$day) {
+  $day = substr($day, 0, -3);
+  print_r($day . ' ');
+}
+print_r($week);*/
 
 
 
@@ -90,17 +97,17 @@ function combineNames($str1 = "", $str2 = "")
   $params = [$str1, $str2];
   foreach ($params as $i => $param) {
     if ($param == "") {
-      $params[$i] = randomHeroName();
+      $params[$i] = randomHeroName($i);
     }
   }
   return implode(" - ", $params);
 }
-function randomHeroName()
+function randomHeroName($i)
 {
   $hero_firstnames = ["captain", "doctor", "iron", "Hank", "ant", "Wasp", "the", "Hawk", "Spider", "Black", "Carol"];
   $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"];
   $heroes = [$hero_firstnames, $hero_lastnames];
-  $randname = $heroes[rand(0, count($heroes) - 1)][rand(0, count($heroes) - 1)];
+  $randname = $heroes[$i][rand(0, 10)];
   return $randname;
 }
 $arr = [];
@@ -135,10 +142,10 @@ copyright((int)date('Y'));
 new_exercise(8);
 function login(string $email, string $password)
 {
-  if ($email == 'john@example.be' || $password == 'pocahontas') {
+  if ($email == 'john@example.be' && $password == 'pocahontas') {
     return 'Welcome John Smith <br />';
   }
-  return 'No access';
+  return 'No access <br />';
 }
 /* do not change any code below */
 //should greet the user with his full name (John Smith)
@@ -188,13 +195,35 @@ new_exercise(10);
 $areTheseFruits = ['apple', 'bear', 'beef', 'banana', 'cherry', 'tomato', 'car'];
 $validFruits = ['apple', 'pear', 'banana', 'cherry', 'tomato'];
 //from here on you can change the code
-for ($i = 0; $i <= count($areTheseFruits); $i++) {
+
+$len = count($areTheseFruits);
+for ($i = 0; $i < $len; $i++) {
   if (!in_array($areTheseFruits[$i], $validFruits)) {
     unset($areTheseFruits[$i]);
   }
 }
 var_dump($areTheseFruits); //do not change this
 
-// Problem: Adds too many letters
-// Solution: Made a for loop with numbers, instead of strings
-// Debug: IDE
+// Problem: The array is shortened by unset, so the count changes
+// Solution:
+// Debug: Echo
+
+// OTHER SOLUTION
+/* foreach ($areTheseFruits as $i => $fruit) {
+  if (!in_array($fruit, $validFruits)) {
+    unset($areTheseFruits[$i]);
+  }
+} var_dump($areTheseFruits); */
+
+
+
+// Bonus round
+new_exercise(11);
+// Below are 5 characters (the space included)
+// Find out why the substring with limit 10 still shortens the string, and what might be a solution (not easy)
+$str = "안녕 세상";
+echo mb_substr($str, 0, 10);
+
+// Problem: Special character are calculated differently
+// Solution: Use mb_substr() instead of substr()
+// Debug: Duckduckgo
