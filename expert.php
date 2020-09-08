@@ -15,6 +15,7 @@ function new_exercise($x)
 // Debug: IDE error message
 
 
+
 // === Exercise 2 ===
 new_exercise(2);
 // Below we create a week array with all days of the week.
@@ -25,7 +26,8 @@ echo $monday;
 
 // Problem: We get tuesday instead of monday
 // Solution: Change index from 1 to 0
-// Debug: Brain
+// Debug: Brain🧠
+
 
 
 // === Exercise 3 ===
@@ -37,6 +39,7 @@ echo substr($str, 0, 10);
 // Problem: Gremlins
 // Solution: Added the correct quotes
 // Debug: Gremlin extension vscode
+
 
 
 // === Exercise 4 ===
@@ -54,6 +57,7 @@ foreach ($week as $day) {
 // Debug: IDE
 
 
+
 // === Exercise 5 ===
 new_exercise(5);
 // The array should be printing every letter of the alphabet (a-z) but instead it does that + aa-yz
@@ -69,6 +73,7 @@ print_r($arr); // Array ([0] => a, [1] => b, [2] => c, ...) a-z alphabetical arr
 // Problem: Adds too many letters
 // Solution: Made a for loop with numbers, instead of strings
 // Debug: IDE
+
 
 
 // === Final exercise ===
@@ -98,22 +103,7 @@ function randomHeroName()
   $randname = $heroes[rand(0, count($heroes) - 1)][rand(0, count($heroes) - 1)];
   return $randname;
 }
-
-// Problem: Multiple errors: No semicolon behind array $hero_lastnames, Glue's position in echo-implode was switched around, 's' missing in combineNames() foreach loop, index missing in combineNames() foreach loop
-// Solution: Added semicolon behind array $hero_lastnames, Switched Glue's position in echo-implode, Added an 's' & index to param in the foreach loop in combineNames()
-// Debug: IDE, Browser
-
-
-new_exercise(7);
 $arr = [];
-
-function copyright(int $year)
-{
-  echo "&copy; $year BeCode";
-}
-//print the copyright
-copyright((int)date('Y'));
-
 function randomGenerate($arr, $amount)
 {
   for ($i = $amount; $i > 0; $i--) {
@@ -122,19 +112,89 @@ function randomGenerate($arr, $amount)
   return $amount;
 }
 
-// Problem:
-// Solution:
+// Problem: Multiple errors: No semicolon behind array $hero_lastnames, Glue's position in echo-implode was switched around, 's' missing in combineNames() foreach loop, index missing in combineNames() foreach loop, RandomGenerate() is not being used.
+// Solution: Added semicolon behind array $hero_lastnames, Switched Glue's position in echo-implode, Added an 's' & index to param in the foreach loop in combineNames()
+// Debug: IDE, Browser
+
+
+
+new_exercise(7);
+function copyright(int $year)
+{
+  echo "&copy; $year BeCode";
+}
+//print the copyright
+copyright((int)date('Y'));
+
+// Problem: Date is string format
+// Solution: Add (int) in front of date
 // Debug: IDE (intelliPhense)
 
 
 
+new_exercise(8);
+function login(string $email, string $password)
+{
+  if ($email == 'john@example.be' || $password == 'pocahontas') {
+    return 'Welcome John Smith <br />';
+  }
+  return 'No access';
+}
+/* do not change any code below */
+//should greet the user with his full name (John Smith)
+echo login('john@example.be', 'pocahontas');
+//Should say: no access
+echo login('john@example.be', 'dfgidfgdfg');
+//Should say: no access
+echo login('wrong@example', 'wrong');
+/* You can change code again */
+
+// Problem: 2 return statements after each other
+// Solution: Added Smith in first return statement
+// Debug: Brain🧠
 
 
+
+new_exercise(9);
+function isLinkValid(string $link)
+{
+  $unacceptables = array('ttps:', '.doc', '.pdf', '.jpg', '.jpeg', '.gif', '.bmp', '.png');
+
+  foreach ($unacceptables as $unacceptable) {
+    if (strpos($link, $unacceptable) == true /*|| strpos($link, $unacceptable) === 0*/) {
+      return 'Unacceptable Found<br />';
+    }
+  }
+  return 'Acceptable<br />';
+}
+//invalid link
+echo isLinkValid('http://www.google.com/hack.pdf');
+//invalid link
+echo isLinkValid('https://google.com');
+//VALID link
+echo isLinkValid('http://google.com');
+//VALID link
+echo isLinkValid('http://google.com/test.txt');
+
+// Problem: No echo statement in front of function call, Can't handle if strpos === 0
+// Solution: Added echo statements, remove h from https | Add OR === 0 statement
+// Debug: Echoed the output of strpos and saw it was 0
+
+
+
+new_exercise(10);
+//Filter the array $areTheseFruits to only contain valid fruits
+//do not change the arrays itself
+$areTheseFruits = ['apple', 'bear', 'beef', 'banana', 'cherry', 'tomato', 'car'];
+$validFruits = ['apple', 'pear', 'banana', 'cherry', 'tomato'];
+//from here on you can change the code
+for ($i = 0; $i <= count($areTheseFruits); $i++) {
+  if (!in_array($areTheseFruits[$i], $validFruits)) {
+    unset($areTheseFruits[$i]);
+  }
+}
+var_dump($areTheseFruits); //do not change this
 
 // Problem: Adds too many letters
 // Solution: Made a for loop with numbers, instead of strings
 // Debug: IDE
-
-// Problem: Multiple errors: No semicolon behind array $hero_lastnames, Glue's position in echo-implode was switched around, 's' missing in combineNames() foreach loop, index missing in combineNames() foreach loop
-// Solution: Added semicolon behind array $hero_lastnames, Switched Glue's position in echo-implode, Added an 's' & index to param in the foreach loop in combineNames()
-// Debug: IDE, Browser
