@@ -17,13 +17,7 @@ declare(strict_types=1);
 
 
 
-new_exercise(7);
-function copyright(int $year)
-{
-  return "&copy; $year BeCode";
-}
-//print the copyright
-copyright(date('Y'));
+
 
 ///
 ///

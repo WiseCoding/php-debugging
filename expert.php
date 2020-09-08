@@ -77,31 +77,42 @@ new_exercise(6);
 // Here is the name: $name - $name2
 // $name variables are randomly combined as seen in the code, fix all the bugs whilst keeping the functionality!
 // Examples: captain strange, ant widow, iron man, ...
-$arr = [];
 
 echo "Here is the name: " . combineNames();
 
 function combineNames($str1 = "", $str2 = "")
 {
   $params = [$str1, $str2];
-  foreach ($params as $param) {
+  foreach ($params as $i => $param) {
     if ($param == "") {
-      $param = randomHeroName();
+      $params[$i] = randomHeroName();
     }
   }
   return implode(" - ", $params);
 }
-
 function randomHeroName()
 {
   $hero_firstnames = ["captain", "doctor", "iron", "Hank", "ant", "Wasp", "the", "Hawk", "Spider", "Black", "Carol"];
   $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"];
-  //$heroes = [$hero_firstnames, $hero_lastnames];
-  //$randname = $heroes[rand(0, count($heroes))][rand(0, 10)];
-  $randname = $hero_firstnames[rand(0, count($hero_firstnames) - 1)] . $hero_lastnames[rand(0, count($hero_lastnames) - 1)];
+  $heroes = [$hero_firstnames, $hero_lastnames];
+  $randname = $heroes[rand(0, count($heroes) - 1)][rand(0, count($heroes) - 1)];
   return $randname;
 }
 
+// Problem: Multiple errors: No semicolon behind array $hero_lastnames, Glue's position in echo-implode was switched around, 's' missing in combineNames() foreach loop, index missing in combineNames() foreach loop
+// Solution: Added semicolon behind array $hero_lastnames, Switched Glue's position in echo-implode, Added an 's' & index to param in the foreach loop in combineNames()
+// Debug: IDE, Browser
+
+
+new_exercise(7);
+$arr = [];
+
+function copyright(int $year)
+{
+  echo "&copy; $year BeCode";
+}
+//print the copyright
+copyright((int)date('Y'));
 
 function randomGenerate($arr, $amount)
 {
@@ -111,8 +122,19 @@ function randomGenerate($arr, $amount)
   return $amount;
 }
 
+// Problem:
+// Solution:
+// Debug: IDE (intelliPhense)
 
 
-// Problem: Multiple errors, No semicolon behind array $hero_lastnames, Glue's position in echo-implode was switched around,
-// Solution: Added semicolon behind array $hero_lastnames, Switched Glue's position in echo-implode,
+
+
+
+
+// Problem: Adds too many letters
+// Solution: Made a for loop with numbers, instead of strings
+// Debug: IDE
+
+// Problem: Multiple errors: No semicolon behind array $hero_lastnames, Glue's position in echo-implode was switched around, 's' missing in combineNames() foreach loop, index missing in combineNames() foreach loop
+// Solution: Added semicolon behind array $hero_lastnames, Switched Glue's position in echo-implode, Added an 's' & index to param in the foreach loop in combineNames()
 // Debug: IDE, Browser
